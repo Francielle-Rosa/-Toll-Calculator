@@ -1,7 +1,20 @@
 
-# 
+ 
 # **TOLL CALCULATOR** 
 
+Menu
+- [**TOLL CALCULATOR**](#toll-calculator)
+- [Introduction](#introduction)
+    - [Requirements](#requirements)
+- [How use (as end-user)](#how-use-as-end-user)
+- [Development](#development)
+    - [Controllers](#controllers)
+    - [Models](#models)
+- [Tools](#tools)
+- [Language](#language)
+- [How to do the test using Postman](#how-to-do-the-test-using-postman)
+- [Movie](#movie)
+- [Contact](#contact)
 
 # Introduction  
 >The main functionality of the code is to calculate toll fees for each vehicle according to the requirements described below.
@@ -106,3 +119,13 @@
 # Movie
 
 > Hackers: Computer Pirates
+
+# Contact
+
+> *__Nome:__* Francielle Rosa
+> 
+> *__E-mail:__* francielle.frosa@gmail.com
+> 
+> *__Linkedin:__* https://www.linkedin.com/in/francielle-rosa-b324736a/
+> 
+> *__Mobile:__* Sweden  +46 76-584 03 20 / Brazil +55 19 98287-7943

@@ -6,7 +6,7 @@ Menu
 - [**TOLL CALCULATOR**](#toll-calculator)
 - [Introduction](#introduction)
     - [Requirements](#requirements)
-- [How use (as end-user)](#how-use-as-end-user)
+- [How to use (as end-user)](#how-to-use-as-end-user)
 - [Development](#development)
     - [Controllers](#controllers)
     - [Models](#models)
@@ -30,10 +30,10 @@ Menu
 >* Some vehicle types are fee-free;
 >* Weekends and holidays are fee-free.
 
-# How use (as end-user)
->* The user must register the tickets of each vehicle containing license plate information, vehicle type and following data with time (This step can be registered any user's vehicles);
->* The user must pass a license plate of the vehicle that will be consulted;
->* The user must request the result of the vehicle fees that was passed.
+# How to use (as end-user)
+>* The user must register the tickets of each vehicle containing license plate information, vehicle type and day with time (This step can register diferent user's vehicles at the same time);
+>* The user must inform a license plate of the vehicle that will be consulted;
+>* The user must request the result of the vehicle fees that was informed.
 
 # Development 
 
@@ -61,13 +61,13 @@ Menu
 > 
 > 3. public void Post(int vehicleId)
 >    
->    Responsible for selecting the specific vehicle that will calculate the toll.
+>    Responsible for selecting the specific vehicle for which the toll will be calculated.
 >         
 >         Variables:
 > 
 >         vehicleId: client vehicle license plate;
 > 
-> 4. Others: GetTollFee / GetTollFee, IsTollFreeDate, IsTollFreeVehicle e TollFreeVehicles.
+> 4. Others: GetTollFee / GetTollFee, IsTollFreeDate, IsTollFreeVehicle and TollFreeVehicles.
 > 
 >    The methods that should be adapted to the test development.
 > 
@@ -102,11 +102,11 @@ Menu
 
     Steps: 
 
-    1. Insert the date in the list 'Historic'
+    1. Insert the date in the 'Historic' list.
     
         http://localhost:1063/api/Historic?vehicleId=2&vehicleType=car&dates=2013-03-26 15:25:00 </a>
 
-    2. Consult the client vehicle license plate that will calculate the toll. Will be insert in the list 'ListVehicleDates'
+    2. Consult the client vehicle license plate that will calculate the toll. It will be insert in the 'ListVehicleDates' list.
     
         http://localhost:1063/api/Historic?vehicleId=2 </a>
     
@@ -114,7 +114,7 @@ Menu
 
         http://localhost:1063/api/Historic </a>
 
-       Expect the result needs to be: 13
+       The expected result should be: 13
 
 # Movie
 

@@ -12,7 +12,9 @@ Menu
     - [Models](#models)
 - [Tools](#tools)
 - [Language](#language)
-- [How to do the test using Postman](#how-to-do-the-test-using-postman)
+- [Tests](#tests)
+    - [Using Postman](#using-postman)
+    - [Using UnitTest](#using-unittest)
 - [Movie](#movie)
 - [Contact](#contact)
 
@@ -42,11 +44,11 @@ Menu
 ### Controllers 
 
 >* File HistoricController
-> 1. public int Get()
+> 1. public int GetTollFee()
 > 
 >      Responsible for retrieving the *__GetTollFee__* main method, which will calculate the fees and return the amount to be charged. 
 > 
-> 2. public void Post(int vehicleId, string vehicleType, DateTime dates)
+> 2. public void PostInsert(int vehicleId, string vehicleType, DateTime dates)
 > 
 >     Responsible for inserting a new register. 
 > 
@@ -59,7 +61,7 @@ Menu
 >         dates: date with time:
 >           (Format datetime: '2013-03-26 15:25:00').
 > 
-> 3. public void Post(int vehicleId)
+> 3. public void PostConsult(int vehicleId)
 >    
 >    Responsible for selecting the specific vehicle for which the toll will be calculated.
 >         
@@ -94,8 +96,9 @@ Menu
 
 >* [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
 
-# How to do the test using Postman
+# Tests
 
+### Using Postman   
     Example test:
 
     Create 3 local requests to execute using [Postman tool](https://www.postman.com/).
@@ -115,6 +118,38 @@ Menu
         http://localhost:1063/api/Historic </a>
 
        The expected result should be: 13
+
+### Using UnitTest
+
+    Scenarios:
+
+    1. The maximum amount per day and vehicle is 60 SEK.
+
+    2. The tax is not charged on weekends (Saturdays and Sundays), public holidays, days before a public holiday and during the month of July.
+
+    3. a vehicle that passes several tolling stations within 60 minutes is only taxed once. The amount that must be paid is the highest one.
+
+    4. Tax Exempt vehicles.
+
+    5. Different clients (vehicleId: client vehicle license plate)
+   
+    - [**TOLL CALCULATOR**](#toll-calculator)
+- [**TOLL CALCULATOR**](#toll-calculator)
+- [Introduction](#introduction)
+    - [Requirements](#requirements)
+- [How to use (as end-user)](#how-to-use-as-end-user)
+- [Development](#development)
+    - [Controllers](#controllers)
+    - [Models](#models)
+- [Tools](#tools)
+- [Language](#language)
+- [Tests](#tests)
+    - [Using Postman](#using-postman)
+    - [Using UnitTest](#using-unittest)
+- [Movie](#movie)
+- [Contact](#contact)
+
+
 
 # Movie
 

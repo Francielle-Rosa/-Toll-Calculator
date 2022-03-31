@@ -15,8 +15,8 @@ namespace API_Test.Models
         {
             this.vehicleId = vehicleId;
             this.vehicleType = vehicleType;
-            this.dates = dates;
-            
+            this.dates = dates;          
         }
+
     }
 }

@@ -5,11 +5,11 @@ using System.Web;
 
 namespace API_Test.Models
 {
-    public class ListVehicle
+    public class ListVehicleDates
     {
         public DateTime dates { get; set; }
 
-        public ListVehicle(DateTime dates)
+        public ListVehicleDates(DateTime dates)
         {
             this.dates = dates;
         }

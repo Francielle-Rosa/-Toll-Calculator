@@ -203,7 +203,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ListVehicle.cs" />
+    <Compile Include="Models\ListVehicleDates.cs" />
     <Compile Include="Models\Historic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

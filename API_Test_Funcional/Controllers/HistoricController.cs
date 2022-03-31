@@ -12,27 +12,27 @@ namespace API_Test.Controllers
 {
     public class HistoricController : ApiController
     {
-        public static List<ListVehicle> ListVehicle = new List<ListVehicle>();
+        public static List<ListVehicleDates> ListVehicleDates = new List<ListVehicleDates>();
         public static List<Historic> Historic = new List<Historic>();
         
-        public int Get()
+        public int GetTollFee()
         {
-            if (ListVehicle.Count == 0) return -1;
-            DateTime[] dates = new DateTime[ListVehicle.Count];
-            for (int i = 0; i < ListVehicle.Count; i++)
+            if (ListVehicleDates.Count == 0) return 0;
+            DateTime[] dates = new DateTime[ListVehicleDates.Count];
+            for (int i = 0; i < ListVehicleDates.Count; i++)
             {
-                 dates[i] = ListVehicle[i].dates;
+                 dates[i] = ListVehicleDates[i].dates;
             }
             return GetTollFee(dates);
         }
 
-        public void Post(int vehicleId, string vehicleType, DateTime dates)
+        public void PostInsert(int vehicleId, string vehicleType, DateTime dates)
         {
             if (Convert.ToInt32(vehicleId)!= 0)
                 Historic.Add(new Historic(vehicleId, vehicleType, dates));
         }
 
-        public void Post(int vehicleId)
+        public void PostConsult(int vehicleId)
         {
             Historic result = Historic.Find(delegate (Historic h) { return h.vehicleId == vehicleId; });
               
@@ -42,13 +42,12 @@ namespace API_Test.Controllers
                 {
                     if (Historic[i].vehicleId == vehicleId)
                     {
-                        if (IsTollFreeVehicle(Historic[i].vehicleType)) { }
-                            if (IsTollFreeDate(Historic[i].dates)){} 
-                                else
-                                {
-                                    DateTime dates = Historic[i].dates;
-                                    ListVehicle.Add(new ListVehicle(dates));
-                                }
+                        if (IsTollFreeVehicle(Historic[i].vehicleType) || IsTollFreeDate(Historic[i].dates)) { }
+                            else
+                            {
+                                DateTime dates = Historic[i].dates;
+                                ListVehicleDates.Add(new ListVehicleDates(dates));
+                            }                            
                     }
                 }
             }
@@ -63,10 +62,11 @@ namespace API_Test.Controllers
                 int nextFee = GetTollFee(date);
                 int tempFee = GetTollFee(intervalStart);
 
-                long diffInMillies = date.Millisecond - intervalStart.Millisecond;
-                long minutes = diffInMillies / 1000 / 60;
+                //long minutes = date.Minute - intervalStart.Minute;
+                //long minutes = diffInSecond / 60;
+                TimeSpan ts = date - intervalStart;
 
-                if (minutes <= 60)
+                if (ts.TotalMinutes <= 60)
                 {
                     if (totalFee > 0) totalFee -= tempFee;
                     if (nextFee >= tempFee) tempFee = nextFee;
@@ -74,6 +74,7 @@ namespace API_Test.Controllers
                 }
                 else
                 {
+                    intervalStart = date;
                     totalFee += nextFee;
                 }
             }
@@ -91,9 +92,10 @@ namespace API_Test.Controllers
             else if (hour == 6 && minute >= 30 && minute <= 59) return 13;
             else if (hour == 7 && minute >= 0 && minute <= 59) return 18;
             else if (hour == 8 && minute >= 0 && minute <= 29) return 13;
-            else if (hour >= 8 && hour <= 14 && minute >= 30 && minute <= 59) return 8;
+            else if (hour == 8 && minute >= 30) return 8;
+            else if (hour >= 9 && hour <= 14) return 8;
             else if (hour == 15 && minute >= 0 && minute <= 29) return 13;
-            else if (hour == 15 && minute >= 0 || hour == 16 && minute <= 59) return 18;
+            else if (hour == 15 && minute >= 30 || hour == 16 && minute <= 59) return 18;
             else if (hour == 17 && minute >= 0 && minute <= 59) return 13;
             else if (hour == 18 && minute >= 0 && minute <= 29) return 8;
             else return 0;
@@ -143,7 +145,6 @@ namespace API_Test.Controllers
             Foreign = 4,
             Military = 5
         }
-
     }
 }
 

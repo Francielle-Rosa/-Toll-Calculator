@@ -133,24 +133,6 @@ Menu
 
     5. Different clients (vehicleId: client vehicle license plate)
    
-    - [**TOLL CALCULATOR**](#toll-calculator)
-- [**TOLL CALCULATOR**](#toll-calculator)
-- [Introduction](#introduction)
-    - [Requirements](#requirements)
-- [How to use (as end-user)](#how-to-use-as-end-user)
-- [Development](#development)
-    - [Controllers](#controllers)
-    - [Models](#models)
-- [Tools](#tools)
-- [Language](#language)
-- [Tests](#tests)
-    - [Using Postman](#using-postman)
-    - [Using UnitTest](#using-unittest)
-- [Movie](#movie)
-- [Contact](#contact)
-
-
-
 # Movie
 
 > Hackers: Computer Pirates
